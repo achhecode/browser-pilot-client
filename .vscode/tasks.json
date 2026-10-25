@@ -1,0 +1,110 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "Maven: Clean",
+      "type": "shell",
+      "command": "mvn",
+      "args": [
+        "clean"
+      ],
+      "group": "build",
+      "problemMatcher": []
+    },
+    {
+      "label": "Maven: Compile",
+      "type": "shell",
+      "command": "mvn",
+      "args": [
+        "compile"
+      ],
+      "group": "build",
+      "problemMatcher": [
+        "$javac"
+      ]
+    },
+    {
+      "label": "Maven: Test",
+      "type": "shell",
+      "command": "mvn",
+      "args": [
+        "test"
+      ],
+      "group": "test",
+      "problemMatcher": [
+        "$javac"
+      ]
+    },
+    {
+      "label": "Maven: Package",
+      "type": "shell",
+      "command": "mvn",
+      "args": [
+        "package"
+      ],
+      "group": "build",
+      "problemMatcher": [
+        "$javac"
+      ]
+    },
+    {
+      "label": "Maven: Clean Package",
+      "type": "shell",
+      "command": "mvn",
+      "args": [
+        "clean",
+        "package"
+      ],
+      "group": "build",
+      "problemMatcher": [
+        "$javac"
+      ]
+    },
+    {
+      "label": "Maven: Verify",
+      "type": "shell",
+      "command": "mvn",
+      "args": [
+        "clean",
+        "verify"
+      ],
+      "group": "build",
+      "problemMatcher": [
+        "$javac"
+      ]
+    },
+    {
+      "label": "JavaFX: Run",
+      "type": "shell",
+      "command": "mvn",
+      "args": [
+        "javafx:run"
+      ],
+      "group": "test",
+      "problemMatcher": [
+        "$javac"
+      ]
+    },
+    {
+      "label": "JavaFX: Run (Clean)",
+      "type": "shell",
+      "command": "mvn",
+      "args": [
+        "clean",
+        "javafx:run"
+      ],
+      "problemMatcher": [
+        "$javac"
+      ]
+    },
+    {
+      "label": "Maven: Update Dependencies",
+      "type": "shell",
+      "command": "mvn",
+      "args": [
+        "dependency:resolve"
+      ],
+      "problemMatcher": []
+    }
+  ]
+}
