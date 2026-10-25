@@ -1,16 +1,146 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.layout.VBox?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.control.Button?>
 <?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Priority?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.control.ScrollPane?>
 
-<VBox alignment="CENTER" spacing="20.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.achhecode.browserpilot.client.PrimaryController">
-   <children>
-      <Label text="Primary View" />
-      <Button fx:id="primaryButton" text="Switch to Secondary View" onAction="#switchToSecondary"/>
-   </children>
-   <padding>
-      <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
-   </padding>
-</VBox>
+<ScrollPane fitToWidth="true"
+            xmlns="http://javafx.com/javafx/25"
+            xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="com.achhecode.browserpilot.client.PrimaryController">
+
+    <content>
+        <VBox spacing="14" fillWidth="true">
+            <padding>
+                <Insets top="22" right="24" bottom="22" left="24"/>
+            </padding>
+
+            <!-- Header -->
+            <VBox spacing="5">
+                <Label text="Linkedin Puzzle Solver"
+                       style="-fx-font-size: 25px; -fx-font-weight: bold;"/>
+
+                <Label text="Calculate puzzle solutions and apply them in your browser."
+                       style="-fx-text-fill: #777777;"/>
+            </VBox>
+
+            <Separator/>
+
+            <!-- Configuration -->
+            <VBox spacing="10">
+                <Label text="Configuration"
+                       style="-fx-font-size: 17px; -fx-font-weight: bold;"/>
+
+                <HBox spacing="12" alignment="CENTER_LEFT">
+                    <VBox spacing="5" HBox.hgrow="ALWAYS">
+                        <Label text="Select game"/>
+                        <ComboBox fx:id="gameComboBox"
+                                  maxWidth="Infinity"/>
+                    </VBox>
+
+                    <VBox spacing="5" HBox.hgrow="ALWAYS">
+                        <Label text="Pinpoint service port"/>
+                        <TextField fx:id="pinpointPortField"
+                                   promptText="localhost:8081"/>
+                    </VBox>
+
+                    <VBox spacing="5" HBox.hgrow="ALWAYS">
+                        <Label text="LinkedIn service port"/>
+                        <TextField fx:id="linkedinPortField"
+                                   promptText="localhost:8082"/>
+                    </VBox>
+                </HBox>
+            </VBox>
+
+            <Separator/>
+
+            <!-- Pinpoint section -->
+            <VBox spacing="10">
+                <Label text="1. Pinpoint"
+                       style="-fx-font-size: 20px; -fx-font-weight: bold;"/>
+
+                <Label text="Request JSON"
+                       style="-fx-font-weight: bold;"/>
+
+                <TextArea fx:id="pinpointRequestArea"
+                          promptText="Enter the request JSON required by the selected game..."
+                          prefRowCount="4"
+                          wrapText="false"/>
+
+                <HBox spacing="10">
+                    <Button fx:id="getAnswerButton"
+                            text="Get Answer"
+                            onAction="#getAnswer"
+                            defaultButton="true"
+                            style="-fx-font-weight: bold;"/>
+                </HBox>
+
+                <Label text="Pinpoint response (read-only)"
+                       style="-fx-font-weight: bold;"/>
+
+                <TextArea fx:id="pinpointResponseArea"
+                          promptText="Pinpoint response will appear here..."
+                          prefRowCount="7"
+                          editable="false"
+                          wrapText="false"/>
+            </VBox>
+
+            <!-- Transfer action -->
+            <VBox spacing="6" alignment="CENTER">
+                <Button fx:id="pasteBelowButton"
+                        text="↓  Paste below"
+                        onAction="#pasteBelow"
+                        disable="true"
+                        style="-fx-font-weight: bold; -fx-padding: 10 24 10 24;"/>
+
+                <Label text="Copies the solution and changes the top-level key from response to request."
+                       wrapText="true"
+                       style="-fx-text-fill: #777777;"/>
+            </VBox>
+
+            <Separator/>
+
+            <!-- LinkedIn section -->
+            <VBox spacing="10">
+                <Label text="2. LinkedIn"
+                       style="-fx-font-size: 20px; -fx-font-weight: bold;"/>
+
+                <Label text="Request JSON (editable)"
+                       style="-fx-font-weight: bold;"/>
+
+                <TextArea fx:id="linkedinRequestArea"
+                          promptText="Paste or edit the LinkedIn request JSON here..."
+                          prefRowCount="8"
+                          wrapText="false"/>
+
+                <HBox alignment="CENTER_LEFT" spacing="12">
+                    <Button fx:id="solveNowButton"
+                            text="Solve Now"
+                            onAction="#solveNow"
+                            style="-fx-font-weight: bold; -fx-padding: 9 22 9 22;"/>
+                </HBox>
+            </VBox>
+
+            <Separator/>
+
+            <!-- Status -->
+            <VBox spacing="5">
+                <Label text="Status"
+                       style="-fx-font-weight: bold;"/>
+
+                <Label fx:id="statusLabel"
+                       text="Ready"
+                       wrapText="true"/>
+            </VBox>
+
+        </VBox>
+    </content>
+</ScrollPane>

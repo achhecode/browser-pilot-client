@@ -1,3 +1,4 @@
+
 package com.achhecode.browserpilot.client;
 
 import java.io.IOException;
@@ -8,31 +9,35 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
-/**
- * JavaFX App
- */
 public class App extends Application {
 
-    private static Scene scene;
+    private PrimaryController controller;
 
     @Override
     public void start(Stage stage) throws IOException {
-        scene = new Scene(loadFXML("primary"), 640, 480);
+        FXMLLoader loader = new FXMLLoader(
+                App.class.getResource("primary.fxml"));
+
+        Parent root = loader.load();
+        controller = loader.getController();
+
+        Scene scene = new Scene(root, 950, 900);
+
+        stage.setTitle("Linkedin Puzzle Solver");
+        stage.setMinWidth(720);
+        stage.setMinHeight(650);
         stage.setScene(scene);
         stage.show();
     }
 
-    static void setRoot(String fxml) throws IOException {
-        scene.setRoot(loadFXML(fxml));
-    }
-
-    private static Parent loadFXML(String fxml) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource(fxml + ".fxml"));
-        return fxmlLoader.load();
+    @Override
+    public void stop() {
+        if (controller != null) {
+            controller.shutdown();
+        }
     }
 
     public static void main(String[] args) {
-        launch();
+        launch(args);
     }
-
 }
