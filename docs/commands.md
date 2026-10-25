@@ -23,4 +23,15 @@ jpackage \
 
 open "target/dist/Linkedin Puzzle Solver.app"
 
+
+# Optional: Create a DMG installer
+
+jpackage \
+  --type dmg \
+  --name "Linkedin Puzzle Solver" \
+  --app-version 1.0.0 \
+  --vendor "Achhe Code" \
+  --module com.achhecode.browserpilot.client/com.achhecode.browserpilot.client.App \
+  --runtime-image target/image \
+  --dest target/dist
 ```
