@@ -35,3 +35,13 @@ jpackage \
   --runtime-image target/image \
   --dest target/dist
 ```
+
+
+## Git
+```sh
+
+git config pull.rebase false  # merge
+git config pull.rebase true   # rebase
+git config pull.ff only       # fast-forward only
+
+```
